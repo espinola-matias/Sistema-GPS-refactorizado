@@ -33,3 +33,15 @@ def ejecutar ():
             fila_entrada = int(input("Dime la fila del punto de partida: "))
             columna_entrada = int(input("Dime la columna del punto de partida: "))
             entrada = (fila_entrada, columna_entrada)
+
+            if not (0 <= fila_entrada < dimension and 0 <= columna_entrada < dimension):
+                print(f"Este punto esta fuera de la ciudad {fila_entrada,columna_entrada}")
+            elif tablero[fila_entrada][columna_entrada] == caracter_edificio:
+                print(f"Aqui no puedes colocar ya que hay un edificio {fila_entrada, columna_entrada}")
+            elif tablero[fila_entrada][columna_entrada] == caracter_agua:
+                print(f"Aqui no puedes colocar, hay un rio {fila_entrada, columna_entrada}")
+            else:
+                print(f"Colocaste el punto de partida en la posicion {fila_entrada, columna_entrada}")
+                break
+        except ValueError:
+            print("Favor solo ingrese numeros")
