@@ -25,4 +25,4 @@ def ejecutar ():
             print("Favor solo ingresar numeros!")
 
     tablero = Tablero(dimension, caracter_edificio, caracter_agua, porcentaje_agua, libre, inicio, destino)
-    tablero.mostrar()
+    tablero.mostrar() 
