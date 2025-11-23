@@ -20,3 +20,12 @@ class ObtenerVecinos:
         for cambio_fila, cambio_columna in direcciones:
             nueva_fila = fila + cambio_fila
             nueva_columna = columna + cambio_columna
+
+            if 0 <= nueva_fila < self.dimension and 0 <= nueva_columna < self.dimension:
+                vecino = (nueva_fila, nueva_columna)
+                contenido_celda = self.tablero[nueva_fila][nueva_columna]
+                if vecino in self.obstaculos_opcionales:
+                    continue 
+        
+                if contenido_celda == self.edificio:
+                    continue 
