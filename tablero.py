@@ -35,3 +35,7 @@ class Tablero:
             if self.tablero[salida[0]][salida[1]] != self.edificio and self.tablero[salida[0]][salida[1]] != self.agua:
                 if salida != entrada:
                     self.tablero[salida[0]][salida[1]] = self.destino
+
+    def mostrar(self):
+        for filas in self.tablero:
+            print(" ".join(filas)) 
