@@ -144,3 +144,12 @@ class EstrategiaBFS:
                     cola.append(vecino)
         
         return None # si no hay camino retorna none
+    
+    # Misma logica para resolver , llegamos al final y reconstruimos de atras para adelante invirtiendo la lista
+    def reconstruir_camino(self, padres, destino):
+        camino = []
+        actual = destino
+        while actual is not None:
+            camino.append(actual)
+            actual = padres[actual]
+        return camino[::-1]
