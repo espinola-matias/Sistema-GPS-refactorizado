@@ -13,3 +13,8 @@ class Tablero:
 
     def __getitem__(self, index):
         return self.tablero[index]
+    
+    def generar_tablero(self):
+        for fila in range(0, self.dimension, 2):
+            for columna in range(0, self.dimension, 2):
+                self.tablero[fila][columna] = self.edificio
