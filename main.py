@@ -70,3 +70,18 @@ def ejecutar ():
     tablero.mostrar()
     
     obstaculo_opcional = [] 
+
+    while True:
+        try:
+            print("\n-- Menu de Soluciones --")
+            print("1- Agregar obstaculos \n2- Resolver con BFS \n3- Resolver con A* \n4- Salir")
+            
+            opcion = int(input("Ingrese el numero de la opcion deseada: "))
+
+            if opcion == 1:
+                fila_obstaculo = int(input("Dime la fila del obstaculo: "))
+                columna_obstaculo = int(input("Dime la columna del obstaculo: "))
+                obstaculo_opcional.append((fila_obstaculo, columna_obstaculo))
+                tablero.tablero[fila_obstaculo][columna_obstaculo] = caracter_obstaculo
+                print(f"Agregaste un obstaculo en la posicion {fila_obstaculo, columna_obstaculo}")
+                tablero.mostrar()
