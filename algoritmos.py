@@ -54,3 +54,17 @@ class Solucionador:
         servicio_vecinos = ObtenerVecinos(self.tablero, self.dimension, self.edificio, self.agua, self.obstaculos)
         # obtenemos los movimientos y inicializamos en none la estrategia porque aun no esta definida
         estrategia = None
+
+        if algoritmo_nombre == "BFS":
+            print(f"\nBusqueda con Algoritmo BFS (No podemos pasar por ninguna obstruccion)")
+            estrategia = EstrategiaBFS(servicio_vecinos)
+            
+        elif algoritmo_nombre == "A_Star":
+            print("\nBusqueda con Algoritmo A* (Podemos pasar los Rios pero no obstaculos!)")
+            estrategia = EstrategiaAStar(servicio_vecinos)
+        
+        else:
+            print("Error algoritmo no reconocido")
+            return None
+
+        return estrategia.resolver(inicio, destino)
