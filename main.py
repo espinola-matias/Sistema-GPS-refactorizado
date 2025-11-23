@@ -65,3 +65,8 @@ def ejecutar ():
                 break
         except ValueError:
             print("Favor solo ingrese numeros")
+
+    tablero.modificar(entrada, salida)
+    tablero.mostrar()
+    
+    obstaculo_opcional = [] 
