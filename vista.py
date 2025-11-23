@@ -20,3 +20,6 @@ class MostrarCamino:
         #Realizo una sobre posicion de entrada y salida en caso de algun error y no marque 
         ciudad_con_camino[self.entrada[0]][self.entrada[1]] = self.inicio
         ciudad_con_camino[self.salida[0]][self.salida[1]] = self.destino
+
+        for fila in ciudad_con_camino:
+            print(" ".join(fila))
