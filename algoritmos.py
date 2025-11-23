@@ -128,3 +128,19 @@ class EstrategiaBFS:
         cola = deque([inicio])
         visitados = {inicio}
         padres = {inicio: None}
+
+        while cola:
+            actual = cola.popleft()
+
+            if actual == destino:
+                return self.reconstruir_camino(padres, destino)
+
+            vecinos = self.vecinos_service.obtener(actual, permitir_agua=False)
+            # El _ es porque ignoramos los costos ya que uso BFS
+            for vecino, _ in vecinos:
+                if vecino not in visitados:
+                    visitados.add(vecino)
+                    padres[vecino] = actual
+                    cola.append(vecino)
+        
+        return None # si no hay camino retorna none
