@@ -68,3 +68,11 @@ class Solucionador:
             return None
 
         return estrategia.resolver(inicio, destino)
+    
+    class EstrategiaAStar:
+        def __init__(self, obtener_vecinos_service):
+            self.vecinos_service = obtener_vecinos_service
+
+        # Vemos la distancia de Manhattan
+        def heuristica(self, a, b):
+            return abs(a[0] - b[0]) + abs(a[1] - b[1])
