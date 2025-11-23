@@ -62,14 +62,3 @@ Ingresa coordenadas de inicio y fin.
 
 Elige el algoritmo para ver la magia.
 
-📸 Ejemplos de Uso
-(Aquí puedes poner capturas de pantalla de tu consola)
-
-Ejemplo A: Cruzando el río para ahorrar tiempo*
-
-Plaintext
-
-⬜ ⬜ ♒ ⬜ ✅
-🏨 ⬜ ♒ ⬜ ◾
-⬜ ⬜ ◾ ◾ ◾
-⬜ 🏨 ♒ 🏨 ❌
