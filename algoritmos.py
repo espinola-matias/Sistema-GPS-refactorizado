@@ -41,3 +41,11 @@ class ObtenerVecinos:
                     movimientos_validos.append((vecino, self.costo_normal))
 
         return movimientos_validos
+    
+class Solucionador:
+    def __init__(self, tablero, caracter_edificio, caracter_agua, obstaculos_opcional, dimension):
+        self.tablero = tablero
+        self.edificio = caracter_edificio
+        self.agua = caracter_agua
+        self.obstaculos = obstaculos_opcional
+        self.dimension = dimension
