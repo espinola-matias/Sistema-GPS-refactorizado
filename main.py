@@ -85,3 +85,28 @@ def ejecutar ():
                 tablero.tablero[fila_obstaculo][columna_obstaculo] = caracter_obstaculo
                 print(f"Agregaste un obstaculo en la posicion {fila_obstaculo, columna_obstaculo}")
                 tablero.mostrar()
+
+            elif opcion == 2 or opcion == 3:
+                nombre_algoritmo = "BFS" if opcion == 2 else "A_Star"
+                
+                solucionador = Solucionador(tablero.tablero, caracter_edificio, caracter_agua, obstaculo_opcional, dimension)
+                
+                camino = solucionador.resolver_con(nombre_algoritmo, entrada, salida)
+                
+                if camino:
+                    print(f"\n¡Camino encontrado con {nombre_algoritmo}!")
+                    MostrarCamino(tablero.tablero, camino, entrada, salida, ruta, inicio, destino, dimension_min).mostrar_camino()
+                else:
+                    print("\nNo se encontro camino!")
+                    tablero.mostrar()
+                    break
+            
+            elif opcion == 4:
+                print("¡Hasta luego!")
+                break
+                
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+
+if __name__ == "__main__":
+    ejecutar()
