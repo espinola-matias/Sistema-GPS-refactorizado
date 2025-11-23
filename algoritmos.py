@@ -76,3 +76,14 @@ class Solucionador:
         # Vemos la distancia de Manhattan
         def heuristica(self, a, b):
             return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+        def resolver(self, inicio, destino):
+            # guardo la cola de prioridad y pasos y usamos para elegir el camino con menor costo
+            contador_pasos = 0
+            cola = []
+            heapq.heappush(cola, (0, contador_pasos, inicio))
+            # Diccionario padre, para saber de donde vino para reconstruir
+            padre = {inicio: None}
+            
+            # Diccionario para llevar la cuenta del costo del recorrido
+            costo_recorrido = {inicio: 0}
