@@ -69,31 +69,45 @@ class Solucionador:
 
         return estrategia.resolver(inicio, destino)
     
-    class EstrategiaAStar:
-        def __init__(self, obtener_vecinos_service):
-            self.vecinos_service = obtener_vecinos_service
+class EstrategiaAStar:
+    def __init__(self, obtener_vecinos_service):
+        self.vecinos_service = obtener_vecinos_service
 
-        # Vemos la distancia de Manhattan
-        def heuristica(self, a, b):
-            return abs(a[0] - b[0]) + abs(a[1] - b[1])
+    # Vemos la distancia de Manhattan
+    def heuristica(self, a, b):
+        return abs(a[0] - b[0]) + abs(a[1] - b[1])
 
-        def resolver(self, inicio, destino):
-            # guardo la cola de prioridad y pasos y usamos para elegir el camino con menor costo
-            contador_pasos = 0
-            cola = []
-            heapq.heappush(cola, (0, contador_pasos, inicio))
-            # Diccionario padre, para saber de donde vino para reconstruir
-            padre = {inicio: None}
-            
-            # Diccionario para llevar la cuenta del costo del recorrido
-            costo_recorrido = {inicio: 0}
+    def resolver(self, inicio, destino):
+        # guardo la cola de prioridad y pasos y usamos para elegir el camino con menor costo
+        contador_pasos = 0
+        cola = []
+        heapq.heappush(cola, (0, contador_pasos, inicio))
+        # Diccionario padre, para saber de donde vino para reconstruir
+        padre = {inicio: None}
+        
+        # Diccionario para llevar la cuenta del costo del recorrido
+        costo_recorrido = {inicio: 0}
 
-            while cola:
-                # Saco el nodo con menor prioridad y chequeo si esta en el destino
-                _, _, actual = heapq.heappop(cola)
+        while cola:
+            # Saco el nodo con menor prioridad y chequeo si esta en el destino
+            _, _, actual = heapq.heappop(cola)
 
-                if actual == destino:
-                    return self.reconstruir_camino(padre, destino)
+            if actual == destino:
+                return self.reconstruir_camino(padre, destino)
 
-                # Usamos el servicio de vecinos con permitir_agua = True
-                vecinos = self.vecinos_service.obtener(actual, permitir_agua=True)
+            # Usamos el servicio de vecinos con permitir_agua = True
+            vecinos = self.vecinos_service.obtener(actual, permitir_agua=True)
+
+            for vecino, costo_movimiento in vecinos:
+                nuevo_costo = costo_recorrido[actual] + costo_movimiento
+
+                # Si no hemos visitado el vecino o encontramos un camino mas barato para llegar
+                if vecino not in costo_recorrido or nuevo_costo < costo_recorrido[vecino]:
+                    costo_recorrido[vecino] = nuevo_costo
+                    
+                    prioridad = nuevo_costo + self.heuristica(vecino, destino)
+                    contador_pasos += 1
+                    heapq.heappush(cola, (prioridad, contador_pasos, vecino))
+                    padre[vecino] = actual
+
+        return None # None en caso de encontrar camino
