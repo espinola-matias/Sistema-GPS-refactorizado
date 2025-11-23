@@ -24,3 +24,9 @@ class Tablero:
                 if self.tablero[fila][columna] == self.camino:
                     if random.randint(0, 100) <= self.porcentaje:
                         self.tablero[fila][columna] = self.agua
+
+        #Verifico en primera instancia en caso de modificar y no verificar en el main (doble control en caso de modificacion)
+    def modificar(self, entrada, salida):
+        if 0 <= entrada[0] < self.dimension and 0 <= entrada[1] < self.dimension:
+            if self.tablero[entrada[0]][entrada[1]] != self.edificio and self.tablero[entrada[0]][entrada[1]] != self.agua:
+                self.tablero[entrada[0]][entrada[1]] = self.inicio
