@@ -87,3 +87,13 @@ class Solucionador:
             
             # Diccionario para llevar la cuenta del costo del recorrido
             costo_recorrido = {inicio: 0}
+
+            while cola:
+                # Saco el nodo con menor prioridad y chequeo si esta en el destino
+                _, _, actual = heapq.heappop(cola)
+
+                if actual == destino:
+                    return self.reconstruir_camino(padre, destino)
+
+                # Usamos el servicio de vecinos con permitir_agua = True
+                vecinos = self.vecinos_service.obtener(actual, permitir_agua=True)
