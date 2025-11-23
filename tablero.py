@@ -10,3 +10,6 @@ class Tablero:
         self.destino = destino
         self.tablero = [[ camino for _ in range(dimension)]for _ in range(dimension)]
         self.generar_tablero()
+
+    def __getitem__(self, index):
+        return self.tablero[index]
