@@ -49,3 +49,8 @@ class Solucionador:
         self.agua = caracter_agua
         self.obstaculos = obstaculos_opcional
         self.dimension = dimension
+
+    def resolver_con(self, algoritmo_nombre, inicio, destino):
+        servicio_vecinos = ObtenerVecinos(self.tablero, self.dimension, self.edificio, self.agua, self.obstaculos)
+        # obtenemos los movimientos y inicializamos en none la estrategia porque aun no esta definida
+        estrategia = None
