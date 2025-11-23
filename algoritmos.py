@@ -119,3 +119,12 @@ class EstrategiaAStar:
             camino.append(actual)
             actual = padres[actual]
         return camino[::-1] # Invierto la lista porque fuimos del final al inicio
+    
+class EstrategiaBFS:
+    def __init__(self, obtener_vecinos_service):
+        self.vecinos_service = obtener_vecinos_service
+
+    def resolver(self, inicio, destino):
+        cola = deque([inicio])
+        visitados = {inicio}
+        padres = {inicio: None}
