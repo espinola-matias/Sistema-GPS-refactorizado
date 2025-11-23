@@ -111,3 +111,11 @@ class EstrategiaAStar:
                     padre[vecino] = actual
 
         return None # None en caso de encontrar camino
+    
+    def reconstruir_camino(self, padres, destino):
+        camino = []
+        actual = destino
+        while actual is not None:
+            camino.append(actual)
+            actual = padres[actual]
+        return camino[::-1] # Invierto la lista porque fuimos del final al inicio
