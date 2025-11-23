@@ -26,3 +26,10 @@ def ejecutar ():
 
     tablero = Tablero(dimension, caracter_edificio, caracter_agua, porcentaje_agua, libre, inicio, destino)
     tablero.mostrar() 
+    print("\n-- Configuremos tu Destino --\n")
+
+    while True:
+        try:
+            fila_entrada = int(input("Dime la fila del punto de partida: "))
+            columna_entrada = int(input("Dime la columna del punto de partida: "))
+            entrada = (fila_entrada, columna_entrada)
