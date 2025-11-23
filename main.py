@@ -45,3 +45,23 @@ def ejecutar ():
                 break
         except ValueError:
             print("Favor solo ingrese numeros")
+
+    while True:
+        try:
+            fila_salida = int(input("Dime la fila del punto de llegada: "))
+            columna_salida = int(input("Dime la columna del punto de llegada: "))
+            salida = (fila_salida, columna_salida)
+
+            if not (0 <= fila_salida < dimension and 0 <= columna_salida < dimension):
+                print(f"Este punto esta fuera de la ciudad {fila_salida,columna_salida}")
+            elif tablero[fila_salida][columna_salida] == caracter_edificio:
+                print(f"Aqui no puedes colocar ya que hay un edificio {fila_salida, columna_salida}")
+            elif tablero[fila_salida][columna_salida] == caracter_agua:
+                print(f"Aqui no puedes colocar, hay un rio {fila_salida, columna_salida}")
+            elif salida == entrada:
+                print(f"Estas colocando en el mismo punto de inicio {fila_salida, columna_salida}")
+            else:
+                print(f"Colocaste el punto de llegada en la posicion {fila_salida, columna_salida}\n")
+                break
+        except ValueError:
+            print("Favor solo ingrese numeros")
