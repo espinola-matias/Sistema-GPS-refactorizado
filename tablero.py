@@ -30,3 +30,8 @@ class Tablero:
         if 0 <= entrada[0] < self.dimension and 0 <= entrada[1] < self.dimension:
             if self.tablero[entrada[0]][entrada[1]] != self.edificio and self.tablero[entrada[0]][entrada[1]] != self.agua:
                 self.tablero[entrada[0]][entrada[1]] = self.inicio
+
+        if 0 <= salida[0] < self.dimension and 0 <= salida[1] < self.dimension:
+            if self.tablero[salida[0]][salida[1]] != self.edificio and self.tablero[salida[0]][salida[1]] != self.agua:
+                if salida != entrada:
+                    self.tablero[salida[0]][salida[1]] = self.destino
