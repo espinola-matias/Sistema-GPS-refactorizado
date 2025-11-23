@@ -29,3 +29,15 @@ class ObtenerVecinos:
         
                 if contenido_celda == self.edificio:
                     continue 
+
+                # verificamos la celda con agua en caso de permitir el paso agregamos a la lista y si no ignoramos
+                elif contenido_celda == self.agua:
+                    if permitir_agua:
+                        movimientos_validos.append((vecino, self.costo_agua))
+                    else:
+                        continue
+                # devolvemos camino con costos normales para bfs
+                else:
+                    movimientos_validos.append((vecino, self.costo_normal))
+
+        return movimientos_validos
